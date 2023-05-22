@@ -1,20 +1,17 @@
-# docker build -t php-fpm-image:dev .
+# docker build -t php-fpm:dev .
 FROM php:8.1.19-fpm
 
 WORKDIR /var/www/app
 
-LABEL name="qwerty image" \
-	desctiption="Docker Image for qwerty project" \
+LABEL name="php-fpm image" \
+	desctiption="base php-fpm Docker Image" \
 	version="0.1"
 
 RUN apt-get update
 RUN apt-get install -y git curl zip unzip vim nano htop wget mc
 
 ## COMPOSER
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-RUN php composer-setup.php
-RUN php -r "unlink('composer-setup.php');"
-RUN mv composer.phar /usr/local/bin/composer
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 ## INSTALL Symfony CLI
 RUN curl -sS https://get.symfony.com/cli/installer | bash
