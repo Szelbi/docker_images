@@ -23,6 +23,6 @@ RUN git config --global user.email "dawidgos25@gmail.com" \
 
 ## COPY FILES
 RUN rm /root/.bashrc
-ADD copy_files/.bashrc /root/.bashrc
-ADD copy_files/.bash_aliases /root/.bash_aliases
+ADD .bashrc /root/.bashrc
+ADD .bash_aliases /root/.bash_aliases
 
