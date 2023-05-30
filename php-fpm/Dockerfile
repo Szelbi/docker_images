@@ -1,9 +1,9 @@
-# docker build -t php-fpm:dev .
+# docker build -t symfony-php-fpm:8.1.19 .
 FROM php:8.1.19-fpm
 
 WORKDIR /var/www/app
 
-LABEL name="php-fpm image" \
+LABEL name="symfony-php-fpm" \
 	desctiption="base php-fpm Docker Image" \
 	version="0.1"
 
